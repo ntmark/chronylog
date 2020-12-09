@@ -65,9 +65,11 @@ def getChronyOutput():
 
 
 if __name__ == "__main__":
+    ''' gets output from "chronyc -n sourcestats" and saves to database.
+    from from cron job for the frequency you want to collect stats for.
+    example /etc/cron.d/chronystats.cron
+    */5 * * * * root /root/chronylog.py > /dev/null 2>&1'''
     p = getChronyOutput()
-    import pdb; pdb.set_trace()
-    print(p)
     con = dbcon()
     try:
         with con.cursor() as cursor:
